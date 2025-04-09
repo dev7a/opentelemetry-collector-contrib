@@ -88,7 +88,7 @@ func (a *secretsManagerAuthenticator) Start(ctx context.Context, _ component.Hos
 
 	// Start refresh ticker
 	a.ticker = time.NewTicker(a.cfg.RefreshInterval)
-	go a.refreshLoop(context.Background())
+	go a.refreshLoop(ctx)
 
 	return nil
 }

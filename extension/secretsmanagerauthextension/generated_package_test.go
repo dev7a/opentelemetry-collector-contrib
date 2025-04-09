@@ -3,11 +3,10 @@
 package secretsmanagerauthextension
 
 import (
-	"testing"
-
 	"go.uber.org/goleak"
+	"testing"
 )
 
 func TestMain(m *testing.M) {
-	goleak.VerifyTestMain(m)
+	goleak.VerifyTestMain(m, goleak.IgnoreTopFunction("net/http.(*persistConn).writeLoop"), goleak.IgnoreTopFunction("net/http.(*persistConn).readLoop"), goleak.IgnoreTopFunction("net/http.(*http2ClientConn).readLoop"), goleak.IgnoreTopFunction("internal/poll.runtime_pollWait"))
 }

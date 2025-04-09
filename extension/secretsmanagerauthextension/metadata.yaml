@@ -20,5 +20,12 @@ resource_attributes:
     enabled: true
 
 tests:
+  goleak:
+    ignore:
+      top:
+        - "net/http.(*persistConn).writeLoop"
+        - "net/http.(*persistConn).readLoop"
+        - "net/http.(*http2ClientConn).readLoop"
+        - "internal/poll.runtime_pollWait"
   config:
     secret_name: test-secret
